@@ -5,7 +5,8 @@
         <field name="name">prestamo.prestamo.list</field>
         <field name="model">prestamo.prestamo</field>
         <field name="arch" type="xml">
-            <list>
+            <list decoration-danger="state == 'atrasado'"
+                  decoration-muted="state == 'devuelto'">
                 <field name="name"/>
                 <field name="partner_id"/>
                 <field name="fecha_prestamo"/>
@@ -23,10 +24,10 @@
 
                 <header>
 
-<button name="action_marcar_atrasado"
-        string="Marcar atrasado"
-        type="object"
-        invisible="state != 'prestado'"/>
+                    <button name="action_marcar_atrasado"
+                            string="Marcar atrasado"
+                            type="object"
+                            invisible="state != 'prestado'"/>
 
                     <button name="action_prestar"
                             string="Prestar"
@@ -146,4 +147,3 @@
               sequence="10"/>
 
 </odoo>
-
