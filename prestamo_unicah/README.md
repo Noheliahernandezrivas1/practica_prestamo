@@ -19,3 +19,11 @@ _name define un modelo nuevo llamado prestamo.prestamo, que sirve para gestionar
 4 ¿Qué hace tracking=True en el campo state?
 
 Permite registrar los cambios que se realizan en el campo state (estado del préstamo) en el historial de seguimiento o chatter de Odoo. Así se puede observar cuándo cambia el estado de un préstamo.
+
+5 En fields.One2many("prestamo.linea", "prestamo_id"), ¿qué indica cada parámetro?
+
+El primer parámetro, "prestamo.linea", indica el modelo relacionado que contiene las líneas de los equipos del préstamo. El segundo, "prestamo_id", indica el campo que relaciona cada línea con su préstamo.
+
+6 ¿Qué pasa con las líneas cuando se borra un préstamo? ¿Qué parte del código lo define?
+
+Las líneas relacionadas se eliminan automáticamente cuando se borra el préstamo. Esto lo define ondelete="cascade" en el campo prestamo_id del modelo prestamo.linea.
