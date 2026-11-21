@@ -22,6 +22,12 @@
             <form>
 
                 <header>
+
+<button name="action_marcar_atrasado"
+        string="Marcar atrasado"
+        type="object"
+        invisible="state != 'prestado'"/>
+
                     <button name="action_prestar"
                             string="Prestar"
                             type="object"
