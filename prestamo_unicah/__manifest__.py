@@ -3,7 +3,7 @@
     "version": "1.0",
     "summary": "Control de préstamos de equipo de la universidad",
     "category": "Services",
-    "author": "Nombre del estudiante",
+    "author": "Nohelia Patricia Hernandez Rivas",
     "depends": [
         "mail"
     ],
