@@ -1,12 +1,14 @@
-NOMBRE: Nohelia Patricia Hernandez Rivas
-CUENTA: 0805200500402
+Nombre: Nohelia Patricia Hernandez Rivas
 
- Préstamo de equipo en Odoo
- PREGUNTAS Y RESPUESTAS 
+Cuenta: 0805200500402
 
- PASO 1
+# Préstamo de equipo en Odoo
 
- 1 ¿Qué pasa con un equipo cuando se desmarca el campo Activo? ¿Por qué es mejor que borrarlo?
+Preguntas y respuestas
+
+## PASO 1
+
+1 ¿Qué pasa con un equipo cuando se desmarca el campo Activo? ¿Por qué es mejor que borrarlo?
 
 Cuando se desmarca el campo Activo, el equipo queda archivado y deja de mostrarse en las vistas normales, pero sigue guardado en la base de datos. Es mejor que borrarlo porque se conserva su información y su historial, y se puede volver a activar cuando sea necesario.
 
@@ -14,7 +16,7 @@ Cuando se desmarca el campo Activo, el equipo queda archivado y deja de mostrars
 
 Sirve para evitar que se copie automáticamente el código de inventario cuando se duplica un equipo. Así, el nuevo registro no conserva el mismo código del equipo original, evitando duplicados de identificación.
 
-PASO 2
+## PASO 2
 
 3 Este modelo usa _name y _inherit al mismo tiempo. ¿Qué hace cada uno aquí?
 
@@ -24,7 +26,7 @@ _name define un modelo nuevo llamado prestamo.prestamo, que sirve para gestionar
 
 Permite registrar los cambios que se realizan en el campo state (estado del préstamo) en el historial de seguimiento o chatter de Odoo. Así se puede observar cuándo cambia el estado de un préstamo.
 
-PASO 3
+## PASO 3
 
 5 En fields.One2many("prestamo.linea", "prestamo_id"), ¿qué indica cada parámetro?
 
@@ -34,7 +36,7 @@ El primer parámetro, "prestamo.linea", indica el modelo relacionado que contien
 
 Las líneas relacionadas se eliminan automáticamente cuando se borra el préstamo. Esto lo define ondelete="cascade" en el campo prestamo_id del modelo prestamo.linea.
 
-PASO 4
+## PASO 4
 
 7 Los botones ya se ocultan según el estado. ¿Por qué los métodos vuelven a validar el estado?
 
@@ -44,7 +46,7 @@ Porque ocultar los botones no impide que los métodos se ejecuten por otras vía
 
 Actualiza el estado de todos los equipos asociados al préstamo a “Prestado”. No hace falta un for porque Odoo permite modificar varios registros al mismo tiempo mediante write().
 
-PASO 5
+## PASO 5
 
 9 El campo equipo_id ya filtra los equipos disponibles. ¿Por qué hace falta el TODO 5?
 
@@ -53,3 +55,13 @@ Porque el filtro solo muestra los equipos disponibles al seleccionar uno en la i
 10 ¿En qué momento se ejecuta un método con @api.constrains? ¿Y la validación de action_prestar?
 
 Un método con @api.constrains se ejecuta cuando se crea o modifica un registro y cambian los campos indicados en el decorador. La validación de action_prestar se ejecuta cuando se llama a ese método, normalmente al presionar el botón Prestar.
+
+## PASO 6
+
+11 ¿Qué pasa si arrastra una tarjeta del kanban a otra columna? ¿Por qué?
+
+La tarjeta cambia de columna y se actualiza el estado del equipo, porque el kanban está agrupado por el campo estado.
+
+12 El campo prestamo_ids se agregó a res.partner. ¿Se crea una columna nueva en la tabla de contactos? Explique.
+
+No, porque prestamo_ids es un campo One2many que permite relacionar un contacto con varios préstamos. La relación se almacena mediante el campo partner_id en la tabla de préstamos, por lo que no se crea una columna nueva en la tabla de contactos.
