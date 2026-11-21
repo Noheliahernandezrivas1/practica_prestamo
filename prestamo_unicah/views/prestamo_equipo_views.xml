@@ -10,6 +10,7 @@
                 <field name="name"/>
                 <field name="categoria"/>
                 <field name="estado"/>
+                <field name="veces_prestado"/>
             </list>
         </field>
     </record>
@@ -29,6 +30,10 @@
                         </div>
                         <div>
                             <field name="categoria"/>
+                        </div>
+                        <div>
+                            <strong>Veces prestado:</strong>
+                            <field name="veces_prestado"/>
                         </div>
                     </t>
                 </templates>
@@ -51,6 +56,7 @@
                             <field name="categoria"/>
                             <field name="estado"/>
                             <field name="active"/>
+                            <field name="veces_prestado" readonly="1"/>
                         </group>
                     </group>
 

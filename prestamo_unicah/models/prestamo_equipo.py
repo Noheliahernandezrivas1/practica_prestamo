@@ -1,4 +1,5 @@
-from odoo import fields, models
+
+from odoo import api, fields, models
 
 
 class PrestamoEquipo(models.Model):
@@ -47,3 +48,17 @@ class PrestamoEquipo(models.Model):
         string="Activo",
         default=True
     )
+
+    veces_prestado = fields.Integer(
+        string="Veces prestado",
+        compute="_compute_veces_prestado"
+    )
+
+    @api.depends("name")
+    def _compute_veces_prestado(self):
+        LineaPrestamo = self.env["prestamo.linea"]
+
+        for equipo in self:
+            equipo.veces_prestado = LineaPrestamo.search_count([
+                ("equipo_id", "=", equipo.id)
+            ])
